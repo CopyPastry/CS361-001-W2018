@@ -4,8 +4,6 @@ TARGET=main
 
 default: pdf
 
-bib: bib
-	bibtex ${TARGET}
 
 dvi: ${TARGET}.tex 
 #	run latex twice to get references correct
