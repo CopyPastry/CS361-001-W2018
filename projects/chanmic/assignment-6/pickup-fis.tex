@@ -1,0 +1,268 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Pick Up! FIS}
+\author{Michael Chan (chanmic), Ryan Miura (miurary), \\Christopher Cooper (cooperchri), Jordan Clark (clarkj3), Ziyu Xiong (xiongz)}
+
+\begin{document}
+\maketitle
+
+\section{Product Release}
+\begin{itemize}
+\item We are hosting our product on the OSU server. 
+\begin{enumerate}
+\item The user needs to be on campus to run the webpage. Otherwise, the user will need to connect to the OSU domain with a VPN, such as Cisco AnyConnect. There are further directions here on the \href{http://oregonstate.edu/helpdocs/network-and-phone/virtual-private-network-vpn/}{Oregon State University website.}
+\item Then the user needs to click the link, which is: 
+\url{http://os1.engr.oregonstate.edu:3001/}
+\end{enumerate}
+\end{itemize}
+
+\section{User Story}
+For our tasks, we split into three teams: Jordan handled CSS, Ziyu and Cooper handled front-end JS and HTML, and Michael and I handled back-end JS, Handlebars, and the database. I will refer to these teams as CSS, Front-End, and Back-End respectively.
+\begin{enumerate}
+
+\item Users can log in
+\begin{enumerate}
+\item Teams: CSS, Front-End, Back-End
+\item Problems: Verification was difficult, but we powered through it.
+\item Time: Creating the log-in page took about an hour while the server code took about the same time.
+\item Status: Tested
+\item Needs to be completed: More testing
+\item UML Diagrams: They were useful.
+\end{enumerate}
+
+\item Users can create an account
+\begin{enumerate}
+\item Teams: Front-End, Back-End
+\item Problems: None
+\item Time: The modal for creating an account took 30 minutes. The page is the same as the log-in page. The server code took about an hour.
+\item Status: Tested
+\item Needs to be completed: None
+\item UML Diagrams: They were useful.
+\end{enumerate}
+
+\item Users can create an event post
+\begin{enumerate}
+\item Teams: CSS, Front-End, Back-End
+\item Problems: We had a couple problems with the database and retrieving events. It came down to formatting, and once we ironed that out it was smooth sailing.
+\item Time: The post creation modal took 30 minutes. The server code took 2 hours to get everything working.
+\item Status: Tested
+\item Needs to be completed: None
+\item UML Diagrams: They were useful.
+\end{enumerate}
+
+\item Users can view event posts
+\begin{enumerate}
+\item Teams: CSS, Front-End, Back-End
+\item Problems: None
+\item Time: The event page took about an hour. The server code was similar to the code above, so together they took about 3 hours total.
+\item Status: Tested
+\item Needs to be completed: None
+\item UML Diagrams: They were useful.
+\end{enumerate}
+
+\item Users can filter events
+\begin{enumerate}
+\item Teams: CSS, Front-End, Back-End
+\item Problems: None
+\item Time: The filter itself took half an hour, the server code took half an hour as well.
+\item Status: Implemented
+\item Needs to be completed: None
+\item UML Diagrams: They were useful.
+\end{enumerate}
+
+\item Users can edit their existing events - first week
+\begin{enumerate}
+\item Add server code to fetch/store post information - 1u
+\end{enumerate}
+
+\item Users have the choice of logging in or creating an account - first week
+\begin{enumerate}
+\item Make buttons for log-in/sign-up - 0u
+\end{enumerate}
+
+\item Users can make an event recurring 
+\begin{enumerate}
+\item Teams: Front-End, Back-End
+\item Problems: Incrementing the date weekly was a bit tedious as we had to check when months ended.
+\item Time: Adding the drop down menu was easy, the server code took half an hour.
+\item Status: Implemented
+\item Needs to be completed: None
+\item UML Diagrams: They were useful.
+\end{enumerate}
+
+\item Users can edit their existing event
+\begin{enumerate}
+\item Teams: Front-End, Back-End
+\item Problems: None
+\item Time: The modal was the same so no time for that, the server code was also super simple so less than half an hour on that
+\item Status: Tested
+\item Needs to be completed: None 
+\item UML Diagrams: They were useful.
+\end{enumerate}
+
+
+\item Users can validate their account - if time allows
+\begin{enumerate}
+\item Format database to hold a validated flag - 1u
+\item Add server code to send verification email - 1u
+\end{enumerate}
+
+
+\item Users can give additional users editing permissions - if time allows
+\begin{enumerate}
+\item Format database for edit permissions - 0u
+\item Add server code to add users to the post editors database - 1u
+\end{enumerate}
+
+\end{enumerate}
+\newpage
+
+\section{Design Changes and Rationale}
+\textbf{Question and Answer}
+
+Question 1: Which parts do you think should in the lower priority if the developer do not have enough time to achieve all the goals?
+
+Answer 1: In my point of view, I think the friend list can be in the lower priority. In your project, the critical parts should be helping user to find a group to work out together, which includes both join others group and create a group to attract other people to join. In this case, whether the users are friends or not is not that a big deal for them. As long as the users can find the partners to work out together, that is already a great success for PickUp! Project. Also, some people may want to find a long term work out partner. Then the friend list is very helpful in this situation. However, if the time is limited, I recommend the the developer to perfect the “post-event”, “search-event” and “login-system” first, which are directly influence the using experience of the users. 
+
+Question 2: What other information do you think that we need to add to the event or some changes that can make our project more user-friendly?
+
+Answer 2: 1) the user may prefer a time range to a specific date.
+	     2) if the events are repeatable, that will be useful for the long term work out groups.
+	     3) location is a important factor for the users to choose the events.
+                 4) if that is technical possible, I would prefer to search the events in a specific distance by type in the postal code.
+\\
+\\
+\textbf{Change}
+
+By now, our project is more like a model of the final version. Because of the time limitation, we only make a few important filter-condition in the sidebar; later on, we will add more filter-conditions in the filter combine with the feedback from our customers. 
+Schedule changes: the rest of filter-condition will be completed by next week. 
+\\
+\\
+For another thing, when we get the feedback on the location part, we strongly agree this point of view, location is really a critical factor to make our website much better in user experience. So, we are thinking to use Google Map API to get the current location of the users. Then, if that is possible, we will add a distance filter-condition in the filter part.
+Requirement Change: add a location system to make the website more user friendly.
+
+
+
+\section{Test}
+\subsection{Unit Test}
+
+The unit test was written for the form validation script on the account creation page.
+The script is meant to check for a valid email address and for a valid password that matches with the password confirmation.
+The test was designed to check boundaries as best as possible on each of the three function.
+
+The three functions tested were checking for a valid email, checking for a valid password, and check that the password confirmation matches the password.
+The functions to validate the email and password were difficult to determine boundaries for as they are a check to a regular expression.
+The boundaries chosen for the email validation were:
+
+\begin{itemize}
+   \item An empty string.
+   \item Contains only one '.'
+   \item Contains only one @.
+   \item Can contain .com, .edu, or .gov.
+   \item Can contain digits before @.
+   \item Can contain digits after the @.
+   \item Can contain uppercase letters before @.
+   \item Can contain uppercase letters after the @.
+   \item Can contain lowercase letters before @.
+   \item Can contain lowercase letters after the @.
+   \item Can contain special characters besides @ before the @.
+\end{itemize}
+
+For the empty string boundary, the two tests asserted that both an empty string and a single character would return false.
+The '.' boundary was tested by asserting that a string with two or no .'s would return false, while a string with only one '.' would return true.
+The @ boundary was tested by asserting that two or no @'s would return false, however the string with two @'s returned true and this was the only test that failed.
+The boundry was also tested with only one @ that returned true.
+The .com, .edu, and .gov boundary was tested by removing a character and asserting false, adding a character and asserting false, changing all 3 letters and asserting false, and changing nothing and asserting true.
+For the digits, uppercase/lowercase letters, and special characters before and after the @, there were individual tests for each being and not being in either location and asserting true.
+This was the end of testing for the email validation and it seems there is error in detecting multiple @ symbols within the regular expression used thus it has a minor error.
+This bug however is minor and not severe at all so I believe it should have a low priority for a fix.
+
+For the password validation the initial boundaries were found based on our requirement for passwords to be at least 5 characters long.
+Thus the boundaries were:
+
+\begin{itemize}
+   \item String with 4 characters.
+   \item String with 5 characters.
+   \item String with 6 characters.
+\end{itemize}
+
+The next boundaries that were decided were based on the types of characters we allow in the password: lowercase/uppercase letter, digits, and special characters.
+This created the boundaries of character types:
+
+\begin{itemize}
+   \item String with only lowercase letters.
+   \item String with only uppercase letters.
+   \item String with only digits.
+   \item String with only special characters.
+   \item String with a lowercase, an uppercase, a digit, and a special character.
+\end{itemize}
+
+The boundaries of character types each combined with the boundaries of string length created our test cases for the password.
+The strings with 4 characters regardless of character type was to return false and all other tests were to return true.
+None of these tests failed.
+I conclude that the password validation is to an acceptable level for initial usage, however I suggest more test cases be made to verify that these results hold true even with long passwords.
+The test is not extensive enough for full confidence in the function yet and more test cases will be added in future.
+
+Finally, the password comparison used the same boundary cases as the password validation except each had two cases to each: one character different in the second string and no characters different between the strings.
+For these tests, the assertions were simple.
+The cases where one character was different in the second string, asserted false and the cases where no characters were different asserted true.
+This is meant to happen regardless of if the strings are valid passwords or not since that is checked by the password validation function.
+Again, none of these tests failed.
+
+This unit test is again an extension of the password validation however I feel that we can have full confidence that this test, as it is a simple comparison, will hold true for longer strings and is not as worrying.
+However when more test cases are added to the password validation, those tests will create the basis of the equivalent tests for this function and we can achieve an even higher confidence in the test.
+
+\subsection{Integration Test}
+
+The integration test handled the user story for creating an account.
+The test was conducted using an end to end testing method with a program to automate the form filling and click events necessary to submit the form.
+The filling of the fields used a type() function on each element and the submit action used a click() function.
+A function to assert the current url was then used to verify the url reached after submitting the form, was the expected url.
+
+
+The test covered all test cases from the form validation unit tests described before to test that with the server attached, the behavior didn't change.
+For every test coming from the unit tests, if the unit tests asserted false, this test would assert that the resulting url was the create-account.html (the url we are currently at).
+If the test asserted false in the unit test, it would assert that the resulting url was the verify.html page that notifies users that an email was sent to their email address.
+Again in these tests, the only failed test was when there were multiple @ symbols in the email address provided.
+
+The next tests were unique to the system since we have the server attached.
+A predefined user was put into the database and the user name was attempted to be used again in one test and this would assert that the resulting url was the create-account.html.
+The next test would attempt to use the predefined user's email address again which would assert that the resulting url was again the create-account.html.
+The final test was a unique user name and email address that would assert that the resulting url was the verify.html.
+These three tests passed successfully.
+
+This unit test I conclude to be quite extensive barring the issues with the unit test cases mentioned for password and email validation.
+When those two issues have been addressed I feel the test coverage of this integration test will be acceptably high.
+
+\subsection{Next Unit Test}
+
+The unit test that was written for next week is the add friend user story test.
+The first assertion in this unit test is the user name is of a nonexistant user would not load a friend request object with that user name.
+The second assertion is the user name string is of an existing user.
+This would assert that a friend request object with the provided user name would be loaded.
+The third assertion is the user name string is of an existing user with an extra character at the end.
+This would assert that a friend request object with the provided user name would not be loaded.
+The last assertion is the user name string is of an existing user with the last character missing.
+This would assert that a friend request object with the provided user name would not be loaded.
+This unit test is small but this user story, while potentially difficult to implement only makes one check: does the requested user exist or not.
+This user story will be implemented in the next week.
+
+\newpage
+
+\section{Meeting Report}
+So far this week we have finished the following user stories: users can log in with username and password, users can create account with username, password, and email, users can create an event post, users can view even post, users can filter results of event searches, users can make an even reoccurring, users can validate account, and users can either log in or create an account on the homepage. Jordan worked on the CSS code and meeting report, Michael worked on the databases/server-side code and product release, Ryan worked on the database/server-side code and user stories, Cooper worked on the HTML and tests, and Ziyu worked on the HTML, design changes and rational. This week we meet at 1:00 pm on Sunday with four of the five group member. However, the goals for next week’s task to completion and reasonable and understood. 
+
+Next week we need to complete the following user stories: users can add other users to group chat, users can send messages to other users, users can add other users to friends list, users can create group chats, users can update their account information, users can edit their existing account and users can give other users editing permission. We believed that of these takes, users can send a message to another user will be one of the more time-consuming tasks and that it will take the most time to do the server side code to loop up users and add messages. Similarly, users can add other users to friends list will be another time-consuming task due to the server side code of looking up friends. We predict that all other tasks will take approximately the same amount of time and attention. 
+
+Overall the group has been able to stay in contact and reported progress throughout the week. As long as everyone continues to do this going forward into next week’s tasks we will not have a problem being able to complete all the remaining tasks. 
+
+
+\end{document}
