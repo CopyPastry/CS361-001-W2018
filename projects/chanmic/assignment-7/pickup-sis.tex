@@ -1,0 +1,244 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Pick Up! SIS}
+\author{Michael Chan (chanmic), Ryan Miura (miurary), \\Christopher Cooper (cooperchri), Jordan Clark (clarkj3), Ziyu Xiong (xiongz)}
+
+\begin{document}
+\maketitle
+
+\section{Product Release}
+\begin{itemize}
+\item We are hosting our product on the OSU server. 
+\begin{enumerate}
+\item The user needs to be on campus to run the webpage. Otherwise, the user will need to connect to the OSU domain with a VPN, such as Cisco AnyConnect. There are further directions here on the \href{http://oregonstate.edu/helpdocs/network-and-phone/virtual-private-network-vpn/}{Oregon State University website.}
+\item Then the user needs to click the link, which is: 
+\url{http://flip1.engr.oregonstate.edu:4000/}
+\end{enumerate}
+\end{itemize}
+
+\section{User Story}
+For our tasks, we split into three teams: Jordan handled CSS, Ziyu and Cooper handled front-end JS and HTML, and Michael and I handled back-end JS, Handlebars, and the database. I will refer to these teams as CSS, Front-End, and Back-End respectively.
+\begin{enumerate}
+
+\item Users can message another user
+\begin{enumerate}
+\item Teams: Front-End, Back-End
+\item Problems: Formatting the database in a useable way was difficult, but we got around it.
+\item Time: Creating the messages page took about an hour while the server code took about 3.
+\item Status: Implemented
+\item Needs to be completed: More testing of storage
+\item UML Diagrams: They were useful.
+\end{enumerate}
+
+\item Users can add another user to their friend’s list
+\begin{enumerate}
+\item Teams: CSS, Front-End, Back-End
+\item Problems: The database was again a problem
+\item Time: The modal for the friend’s list took 30 minutes. The server code took 2 hours.
+\item Status: Implemented
+\item Needs to be completed: Testing
+\item UML Diagrams: They were useful.
+\end{enumerate}
+
+\item Users can update their account profile settings
+\begin{enumerate}
+\item Teams: CSS, Front-End, Back-End
+\item Problems: None.
+\item Time: The account settings page took an hour to make. The server code also took an hour.
+\item Status: Tested
+\item Needs to be completed: None
+\item UML Diagrams: They were useful.
+\end{enumerate}
+
+\end{enumerate}
+\newpage
+
+\section{Design Changes and Rationale}
+I had asked a few questions last week, and also receive some useful feedback from our customers. This week, our group didn’t meet with the customers, we just worked on the objects that we had already had in our system. \\
+\\
+Since the final is getting close, all of our PickUp! Group members has a busy week. Because of the time limitation, our group decides not to add more filter-condition in the filter sidebar. As for the Google API we just mentioned in the last assignment, we also postpone that part, which is really a hard decision for us. If it is possible, we still can meet and work on that section together in the future. \\
+\\
+So, in this week, we spend most of time in setting up our website in a nice format, working on our login system and post-event system. Since we have a lot of html files, so the CSS takes a while to finish. Login system is the hardest one to complete. We learnt a lot of information from the website, especially how to store the username and the related password. As for the post event part, the key to solve this problem is connect the information that user just typed in to the DB. As for the friend list part, we don’t finish that right now, but we are still keep working on that part and trying to make that part works. \\
+\\
+As for the changes to the user stories, we find that we are not able to complete all the user stories within 2 weeks, so we decide to finish the user story with the higher priorities which are login system, search and post function. As for the friend list and password recovery part, we are not giving them up, we are still working on that. Meanwhile, we also find some new user stories, such as the Location filter using Google Map API, but we put this completed features in a lower priority, I think we will finally figure that out. .  \\
+\\
+\textbf{Change}
+
+By now, our project is more like a model of the final version. Because of the time limitation, we only make a few important filter-condition in the sidebar; later on, we will add more filter-conditions in the filter combine with the feedback from our customers. 
+Schedule changes: the rest of filter-condition will be completed by next week. 
+\\
+\\
+For another thing, when we get the feedback on the location part, we strongly agree this point of view, location is really a critical factor to make our website much better in user experience. So, we are thinking to use Google Map API to get the current location of the users. Then, if that is possible, we will add a distance filter-condition in the filter part.
+Requirement Change: add a location system to make the website more user friendly.
+
+
+\section{Refactoring}
+Most of the refactoring involved converting HTML files into .handlebars. This allowed webpages to dynamically generate, allowing us to insert and remove post elements. \\
+\\
+Furthermore, there were several files of the same program and reoccurring code throughout the Javascript files. Most of this code was deleted or combined after testing. This helped keep all of the code clean and understandable for others to use.\\
+\\
+After the handlebar conversion, there were several issues with extra headers on each handlebar file. Several handlebar files were changed to house unique headers at the loss of extra buttons. 
+
+
+\section{Testing}
+
+Tests for integration were handled using an end to end testing software to automate the typing of input and clicking of buttons. 
+The downside to this testing is that it is unable to see the server itself and check databases.
+The tests simulate typing of certain inputs and clicking of elements on the page and check an element on the resulting page.
+This allows to a certain extent that the entire frontend processes are working but cannot guarantee the correctness of the server.
+
+\subsection{Filters Test}
+
+The filters test was performed by simulating the typing of inputs for the title and date of the event desired, as well as selecting a level of seriousness.
+The test events were hardcoded onto the web page for now and would be removed if they did not match the filter.
+For testing purposes we created 3 stock events.
+This allowed us to create a test that checked each filter individually.
+The first 4 tests were created to check the title filter.
+Three of these tests had inputs of the titles of each of the three test events while the fourth test was an input that was not matching any of the titles.
+The next 13 tests were to check the date input.
+The dates were picked based on the three test events, where 3 tests had each field with a incorrect value (day, month, year) and one test with the correct input for all three fields.
+The final test was the test of all inputs being wrong for all events. The one test with correct input for a single event was checked to see if the event element was on the page and that no other elements were listed.
+All other tests were expected to result in no event elements being displayed on the page.
+The next 3 tests were of the seriousness level filter. 
+All three events had one of the three seriousness levels attributed to it.
+Each test checked the filter of selecting a different seriousness level and verified that only the html element of the respective event was shown.
+The last test for the filters was for all fields to be at their default value (no input entered) and verify that all event html elements were displayed.
+
+All tests passed and showed that at least on the html side that the filters could correctly remove events that were not intended to be shown based on the filters entered.
+The test does not give full confidence however as the test must be expanded to have more events included so that each test of the filters will be expected to show multiple events.
+This is a current work in progress that will be implemented as further work is done to the event search system.
+
+\subsection{Create Account Test}
+
+The test covered all test cases from the form validation unit tests described in the last report to test that with the server attached, the behavior didn't change.
+As a reminder of the test cases, they are shown below.
+
+The boundaries chosen for the email validation were:
+
+\begin{itemize}
+   \item An empty string.
+   \item Contains only one '.'
+   \item Contains only one @.
+   \item Can contain .com, .edu, or .gov.
+   \item Can contain digits before @.
+   \item Can contain digits after the @.
+   \item Can contain uppercase letters before @.
+   \item Can contain uppercase letters after the @.
+   \item Can contain lowercase letters before @.
+   \item Can contain lowercase letters after the @.
+   \item Can contain special characters besides @ before the @.
+\end{itemize}
+
+For the empty string boundary, the two tests asserted that both an empty string and a single character would return false.
+The '.' boundary was tested by asserting that a string with two or no .'s would return false, while a string with only one '.' would return true.
+The @ boundary was tested by asserting that two or no @'s would return false, however the string with two @'s returned true and this was the only test that failed.
+The boundry was also tested with only one @ that returned true.
+The .com, .edu, and .gov boundary was tested by removing a character and asserting false, adding a character and asserting false, changing all 3 letters and asserting false, and changing nothing and asserting true.
+For the digits, uppercase/lowercase letters, and special characters before and after the @, there were individual tests for each being and not being in either location and asserting true.
+This was the end of testing for the email validation and it seems there is error in detecting multiple @ symbols within the regular expression used thus it has a minor error.
+This bug however is minor and not severe at all so I believe it should have a low priority for a fix.
+
+For the password validation the initial boundaries were found based on our requirement for passwords to be at least 5 characters long.
+Thus the boundaries were:
+
+\begin{itemize}
+   \item String with 4 characters.
+   \item String with 5 characters.
+   \item String with 6 characters.
+\end{itemize}
+
+The next boundaries that were decided were based on the types of characters we allow in the password: lowercase/uppercase letter, digits, and special characters.
+This created the boundaries of character types:
+
+\begin{itemize}
+   \item String with only lowercase letters.
+   \item String with only uppercase letters.
+   \item String with only digits.
+   \item String with only special characters.
+   \item String with a lowercase, an uppercase, a digit, and a special character.
+\end{itemize}
+
+The boundaries of character types each combined with the boundaries of string length created our test cases for the password.
+The strings with 4 characters regardless of character type was to return false and all other tests were to return true.
+
+For every test coming from the unit tests, if the unit tests asserted false, this test would assert that the resulting url was the create-account.html (the url we are currently at).
+If the test asserted false in the unit test, it would assert that the resulting url was the verify.html page that notifies users that an email was sent to their email address.
+Again in these tests, the only failed test was when there were multiple @ symbols in the email address provided.
+
+The final test was a unique user name and email address that would assert that the resulting url was the verify.html.
+This test was simply to verify the url change on a good input on all fields, seperate from the other tests to ensure that good values redirected to the verify.html page.
+This test passed.
+
+This unit test I conclude to be quite extensive barring the issues with the unit test cases mentioned for password and email validation.
+When those two issues have been addressed I feel the test coverage of this integration test will be acceptably high except for the server side integration which was not tested here.
+
+Due to the continued failure of the multiple @ symbols in the email address being accepted, more work will be put into changing the regular expression that checks it.
+The next step will be adding a second check in the function, specifically checking if there is multiple of that character in the string.
+
+\subsection{Create Event Test}
+
+The test for the create event was an extremely simple one for this stage as the system could only know about the window popping up after the create event button was pressed and the window closes after the user presses submit. 
+This test did succeed on several attempts that were made, however the only conclusion that can be made from the test is the the window behavior of creating an event is correct.
+This makes this test not very useful.
+
+Attempts will be made to create a test to check the database but that does not seem to be a supported feature of the end to end tester used.
+Work to be done as we expand this system is to create user feedback on the event creation as right now it does not provide a message even when a field is empty.
+Some error messages have been added but due to the nature of the window, the reload of the page after a submit action sent to the server, the window is closed regardless of errors.
+This means the error messages are not seen.
+A second look at the popup window implementation is required.
+
+\subsection{Forgot Password Test}
+
+The forgot password test was largely the same as the create account test except this test only was concerned with the password verification and password matching.
+The test used the same inputs used in the create account test regarding passwords to ensure that the integration of the two functions called by both processes still worked as expected here.
+These tests verified the url to remain at the new-password.html on invalid password inputs and changed to recovery-success.html on valid password inputs.
+These tests all passed and showed that the client side integration of this user story worked as expected.
+
+Unfortunately this test is only of limited use as most important to this is the update of the database to reflect the changed password.
+Some changes that must be made to this is to make the password change html have a unique query string for that user and make it only accessable through a link sent in email. 
+In regards to changes as a result of this test there are none at the moment, but the test itself will need change as soon as we begin creating a unique url for a user.
+
+\section{Meeting Report}
+The new schedule of things to complete this next week is the final presentation and the demo during office hours. The group will meet on Tuesday to finish the final touches for the presentation that will be given in class on Tuesday. We have not yet discussed a time for the demonstration however, we will be discussing this during Tuesday's meeting. The user stories that we have not yet completed include: users can add other users to group chat, users can message other users, users can add other users as friends, users can create group chats, and users can give other users edit permissions. For the most part, these are all related and focus on the chat function on the website. However, we are mainly focused on the presentation and demonstration for this week. \\
+\\
+This week we were able to finish the CSS code and the following user stories: users can update account profile, users can recover the password by email, and users can validate the account. The week we were able to meet with three of the five team members. Coming to the end of this we are realizing that we will not be able to complete all the tasks and specifications originally requested by the customer however we are still trying to meet as many of the requests as possible.
+
+\subsection{Contributions of each team member for the week:}
+\begin{itemize}
+\item Jordan: 
+\begin{itemize}
+\item CSS code and Meeting Report
+\end{itemize}
+
+\item Michael: 
+\begin{itemize}
+\item Databases/Server side code and Product Release and Refactor
+\end{itemize}
+
+\item Ryan: 
+\begin{itemize}
+\item Databases/Server side and User Story
+\end{itemize}
+
+\item Cooper: 
+\begin{itemize}
+\item HTML files and Tests
+\end{itemize}
+
+\item Ziyu: 
+\begin{itemize}
+\item HTML files and Design Changes and Rationale 
+\end{itemize}
+
+\end{itemize}
+
+
+\end{document}
